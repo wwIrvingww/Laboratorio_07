@@ -16,14 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.ViewModel
-import com.example.laboratorio07.ui.categories.viewmodel.categoriesViewModel
+import com.example.laboratorio07.ui.categories.viewmodel.CategoriesViewModel
 import com.example.laboratorio07.ui.theme.Laboratorio07Theme
 import androidx.compose.foundation.lazy.items
-import com.example.laboratorio07.ui.categories.view.CategoryScreen
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 
 class MainActivity : ComponentActivity() {
-    val viewModel by viewModels<categoriesViewModel> ()
+    private val viewModel by viewModels<CategoriesViewModel> ()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -41,7 +42,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(viewModel: categoriesViewModel) {
+fun Greeting(viewModel: CategoriesViewModel) {
+    val categories by viewModel.listCategories.observeAsState(null)
+
+    LaunchedEffect(Unit){
+        viewModel.fetchCategories()
+    }
+
+    LazyColumn(modifier = Modifier.fillMaxWidth()) {
+        categories?.let {
+            items(it.categories) {
+                Text(text = it.strCategory)
+                //Text(text = "API CONECTADA ")
+            }
+        }
+    }
+
+
+}
+
+
+
+
+/**@Composable
+fun Greeting(viewModel: CategoriesViewModel) {
     val state = viewModel.state
 
     if(state.isloading){
@@ -53,18 +77,12 @@ fun Greeting(viewModel: categoriesViewModel) {
     if (state.categories.isNotEmpty()) {
         LazyColumn(modifier = Modifier.fillMaxWidth()){
             items(state.categories){
-                Text(text = it.meals.toString())
+                Text(text = it.category)
             }
         }
     }
 
-}
-
-@Preview
-@Composable
-fun PreviewGreeting() {
-    Greeting(viewModel = categoriesViewModel())
-}
+}*/
 
 
 
