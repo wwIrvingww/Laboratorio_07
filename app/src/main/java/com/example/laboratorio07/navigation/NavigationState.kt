@@ -6,9 +6,5 @@ sealed class NavigationState(val route: String) {
     object MealsRecepiesList: NavigationState("categories/{category}")  {
         fun createRoute(category: String) = "categories/$category"
     }
-    object Home: NavigationState("home")
-    object Events: NavigationState("event")
-    object Detail: NavigationState("detail")
-    object Profile: NavigationState("profile")
-    object Settings: NavigationState("settings")
+
 }

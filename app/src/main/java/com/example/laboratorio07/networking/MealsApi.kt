@@ -25,4 +25,8 @@ interface MealsApi {
         @Query("c") category: String
     ): MealCategoryResponse
 
+    @GET("lookup.php?i=52944")
+    suspend fun getLookUp(): MealsResponse
+
 }
+

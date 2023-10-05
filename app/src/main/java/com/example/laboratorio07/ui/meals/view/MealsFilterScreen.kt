@@ -91,7 +91,7 @@ fun MealCategory(meal: Meal) {
                     .padding(16.dp)
             ) {
                 Text(
-                    text = stringResource(R.string.app_name),
+                    text = stringResource(meal.strMealThumb.toInt()),
                     style = MaterialTheme.typography.headlineMedium
                 )
                 Text(

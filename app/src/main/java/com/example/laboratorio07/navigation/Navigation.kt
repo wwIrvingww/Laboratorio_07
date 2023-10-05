@@ -39,21 +39,6 @@ fun Navigation(modifier: Modifier = Modifier) {
             Log.d("ARGUMENTNAV", categoryName)
             MealsFilterScreen(navController = navController, category = categoryName)
         }
-        /**
-        composable(route = NavigationState.Home.route) {
-            ConcertsView(navController = navController)
-        }
-        composable(route = NavigationState.Detail.route) {
-            VenuesView(navController = navController)
-        }
-        composable(route = NavigationState.Events.route) {
-            DetailView(navController = navController)
-        }
-        composable(route = NavigationState.Profile.route) {
-            ProfileView(navController = navController)
-        }
-        composable(route = NavigationState.Profile.route) {
-            FavoritesView(navController = navController)
-        }*/
+
     }
 }

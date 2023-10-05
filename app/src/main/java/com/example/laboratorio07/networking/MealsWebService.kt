@@ -25,4 +25,9 @@ class MealsWebService {
     suspend fun filterMealsByCategory(category: String): MealCategoryResponse {
         return api.filterByCategory(category)
     }
+
+    suspend fun getLookUp(): MealsResponse {
+        //se manda a llamar al lookup
+        return api.getLookUp()
+    }
 }

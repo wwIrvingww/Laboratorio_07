@@ -64,17 +64,18 @@ fun MealCategory(meal: Category, navController: NavController) {
             .padding(top = 16.dp)
     ) {
         Row {
-            Image(
+            /*Image(
                 painter = rememberImagePainter(meal.strCategoryDescription),
                 contentDescription = null,
                 modifier = Modifier
                     .size(88.dp)
                     .padding(4.dp)
-            )
+            )*/
             Column(
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
                     .padding(16.dp)
+                    .fillMaxWidth()
                     .clickable {
                         meal.strCategory?.let {
                             navigateTo(
@@ -84,24 +85,29 @@ fun MealCategory(meal: Category, navController: NavController) {
                         }
                     }
             ) {
+                /*Text(
+                    //text = (""),
+                    text = meal.strCategoryDescription,
+                    style = MaterialTheme.typography.headlineMedium
+                )*/
+
                 Text(
-                    text =("Texto de VEWCATEGORIES"),
+                    text =(""),
                     style = MaterialTheme.typography.headlineLarge
                 )
                 Text(
                     text = meal.strCategory,
                     style = MaterialTheme.typography.headlineMedium
+                    
                 )
                 Divider()
-                Text(
-                    text = ("Texto de viewcotegories2"),
-                    //text = stringResource(R.string.date_content, 11, 12),
-                    style = MaterialTheme.typography.headlineMedium
-                )
+
             }
         }
     }
 }
+
+
 
 @Preview(showBackground = true)
 @Composable
